@@ -1,262 +1,539 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style type="text/css">
 
+<style>
 
+#img{
+  height: 20px;
+}
 
-	
-/* O menu da barra lateral */
-.sidebar {
-  height: 100%; /* 100% altura */
-  width: 50px !important; /* 0 largura - altere isso com JavaScript */
-  position: fixed; /* Fique no lugar */
-  z-index: 1; /* Fique no topo */
-  top: 0;
-  left: 0;
-  /*background-color: #111; /* Black*/
-  overflow-x: hidden; /* Desativar rolagem horizontal */
-  padding-top: 60px; /* Coloque o conteúdo de 60px a partir do topo */
-  transition: 0.5s; /* Efeito de transição de 0,5 segundo para deslizar na barra lateral */
+#main{
+  width: 50px !important;
+}
+
+.w20{
+  width: 20px !important;
+  align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.h{
+  height: 110px !important;
+  border-radius: 50% !important;
+}
+
+.h10{
+  height: 30px !important;
+  border-radius: 50% !important;
+}
+
+.item-linha-1{
+  min-height: 200px !important;
+}
+
+.item-linha-2{
+  min-height: 600px !important;
 }
 
 
-#mySidebar{
-  width: 50px;
+.w100{
+  width: 100% !important;
 }
 
-/* Os links da barra lateral 
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}*/
-
-/* Quando você passa o mouse sobre os links de navegação, muda sua cor */
-.sidebar a:hover {
- /* color: #f1f1f1;*/
+#example_wrapper{
+  width: 100% !important;
 }
 
-/* Aprenda a pronunciar
-Posicione e estilize o botão Fechar (canto superior direito) */
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
 
-/* O botão usado para abrir a barra lateral */
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  /*background-color: #444;*/
-}
-
-/* Conteúdo da página de estilo - use isso se você quiser enviar o conteúdo da página para a direita quando abrir a navegação lateral */
-#main {
-  transition: margin-left .5s; /* Se você quiser um efeito de transição */
-  padding: 20px;
-  margin-left: 50px;
-}
-
-/* Em telas menores, nas quais a altura é menor que 450 px, altere o estilo do sidenav (menos preenchimento e um tamanho de fonte menor) 
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
-*/
-
-  header, main, footer {
-      padding-left: 300px;
-    }
-
-    @media only screen and (max-width : 992px) {
-      header, main, footer {
-        padding-left: 0;
-      }
-    }
 
 </style>
+	<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
      <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+    
+
+    <link rel="stylesheet" href="assets/js/jquery-ui-1.12.1/jquery-ui.min.css">
+    <link href="assets/css/fontA/css/fontawesome.css" rel="stylesheet">
+    <link href="assets/css/fontA/css/brands.css" rel="stylesheet">
+    <link href="assets/css/fontA/css/solid.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+      <!-- Corrige o erro 500 -->
+    <link rel="icon" href="data:,">
 </head>
 <body>
-<nav>
-    <div class="nav-wrapper indigo">
-    <div id="main" data-activates="sidebar" class="button-collapse container left"><i class="material-icons white-text">menu</i></div>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#"><i class="material-icons">notifications_none</i></a></li>        
-      </ul>
+  <nav>
+    <div class="row">
+      <div class="nav-wrapper indigo col s12 m12 l12">
+
+        <div id="main" data-target="sidebar" class="sidenav-trigger"><i class="material-icons white-text"><i class="fas fa-bars"></i></i></div>
+          <ul class="right">                   
+            <li><a href="#"><i class="material-icons center-align"><img id="profile" class="responsive-img h10" src="assets/images/marcelo.jpg"></i></a></li>      
+            <li><a href="#"><i class="fas fa-bell"></i></a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </nav>
-  
               
-<div id="sidebar" class="side-nav">    
-            <div class="user-view">
-              <div class="background">
+  <div id="sidebar" class="sidenav">    
+              <div class="user-view">
+                <div class="background">
+                  <img src="assets/images/computador.jpg">
+                </div>
                 
-              </div>
-              <a href="#!user"></a>
-              <a href="#!name"><span class="white-text name">Marcelo Mechi</span></a>
-              <a href="#!email"><span class="white-text email">marcelo.goncalves@brbpo.com.br</span></a>
-            </div>
+                  <a href="#!user"><img id="profile" class="responsive-img h" src="assets/images/marcelo.jpg"></a>
 
-      <ul class="collapsible">
-        <li>
-            <a class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Point</a>
-            <div class="collapsible-body">
-                      <ul>
-                        <li><a href="#!">Apontamentos</a></li>
-                        <li><a href="#!">Gerencial</a></li>
-                            <ul class="collapsible">
-                                <li>
-                                <a class="collapsible-header">Menu com submenu</a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                    <li><a href="#!">asdf</a></li>
-                                    <li><a href="#!">asdf</a></li>
-                                    <li><a href="#!">asdf</a></li>
-                                    </ul>
-                                </div>
-                                </li>
-                            </ul>
-                            <li><a href="#!">Teste</a></li>
-                      </ul>
+                <a href="#!name"><span class="white-text name">Marcelo Mechi</span></a>
+                <a href="#!email"><span class="white-text email">marcelo.goncalves@brbpo.com.br</span></a>
               </div>
-        </li>
-        <li>
-              <a class="collapsible-header">Quadro<i class="material-icons">arrow_drop_down</i></a>
+
+        <ul class="collapsible">
+          <li>
+              <a class="collapsible-header"><i class="material icons"><img id="img" class="circle" src="assets/images/trabalho-em-equipe.png"></i><i class="material icons small right"><i class="fas fa-angle-down"></i></i>DH</a>
               <div class="collapsible-body">
-                <ul>
-                  <li><a href="#!">Gerenciar</a></li>
-                  <li><a href="#!">Dados Funcionários</a></li>
-                  <li><a href="#!">Parametrizar</a></li>
-                </ul>
-              </div>
-        </li>
-        <li>
-        <a class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Demandas</a>
-          <div class="collapsible-body">
-            <ul>
-              <li><a href="#!">Atendimento</a></li>
-              <li><a href="#!">Nova Demanda</a></li>
-              <li><a href="#!">Minhas Demandas</a></li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a class="collapsible-header">Planejamento<i class="material-icons">arrow_drop_down</i></a>
-          <div class="collapsible-body">
-            <ul>
-              <li><a href="#!">Faturamento</a></li>
-              <li><a href="#!">Dimensionamento</a></li>
-              <li><a href="#!">Escala de Pausa</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-</div> 
-
-
-
-
-<div class="row" id="graficosxxx">
-      <div class="col s12 m12 l4">
-          <div class="card hoverables center-align">
-            <div class="card-content">
-              <span class="card-title">PMSP</span>
-                <div>
-                    <canvas id="grafico"></canvas>
+                        <ul>
+                          <li><a href="#!">Avaliações</a></li>
+                          <li><a href="#!">Banco de Curriculum</a></li>
+                              <ul class="collapsible">
+                                  <li>
+                                  <a class="collapsible-header"><i class="material icons small right"><i class="fas fa-angle-down"></i></i>Relatórios</a>
+                                  <div class="collapsible-body">
+                                      <ul>
+                                      <li><a href="#!">Desempenho</a></li>
+                                      </ul>
+                                  </div>
+                                  </li>
+                              </ul>
+                              <li><a href="#!">Quadro de Funcionários</a></li>
+                        </ul>
                 </div>
-            </div>
-            <div class="card-action">
-              <a href="#">Relatório</a>
-              <a href="#">Relatório</a>
-            </div>
-          </div>
-     </div>
-    <div class="col s12 m12 l4">
-          <div class="card hoverables center-align">
-            <div class="card-content">
-              <span class="card-title">DEFENSORIA</span>
-                <div>
-                    <canvas id="grafico1"></canvas>
+          </li>
+          <li>
+                <a class="collapsible-header"><i class="material icons"><img id="img" class="circle" src="assets/images/inteligencia.png"></i>Planejamento<i class="material icons small right"><i class="fas fa-angle-down"></i></i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li><a href="#!">Dimensionamento</a></li>
+                    <li><a href="#!">Atendimento de Demandas</a></li>
+                  </ul>
                 </div>
+          </li>
+          <li>
+          <a class="collapsible-header"><i class="material icons"><img id="img" class="circle" src="assets/images/hospital.png"></i><i class="material icons small right"><i class="fas fa-angle-down"></i></i>Sesmt</a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">Atestados</a></li>
+              </ul>
             </div>
-            <div class="card-action">
-              <a href="#">Relatório</a>
-              <a href="#">Relatório</a>
-            </div>
-          </div>
-     </div>
-     <div class="col s12 m12 l4">
-          <div class="card hoverables center-align">
-            <div class="card-content">
-              <span class="card-title">CDHU</span>
-                <div>
-                    <canvas id="grafico2"></canvas>
+          </li>
+
+        </ul>
+</div>   
+
+
+<div class="row">
+     <div class="col s12 m6 l2">
+         
+       <div class="valign-wrapper item-linha-1">
+           <div class="input-field w100">
+                      <select multiple>
+                        <option value="999">Todos</option>
+                        <option value="1">Brasília</option>
+                        <option value="2">São Paulo</option>
+                      </select>
+                    <label>Selecione a Filial</label>
                 </div>
-            </div>
-            <div class="card-action">
-              <a href="#">Relatório</a>
-              <a href="#">Relatório</a>
-            </div>
-          </div>
+       </div>
+
+          
+    </div>
+    <div class="col s12 m6 l2">
+            <div class="valign-wrapper item-linha-1">
+           <div class="input-field w100">
+                      <select multiple>
+                        <option value="999">Todos</option>
+                        <option value="1">PMSP</option>
+                        <option value="2">MEC</option>
+                      </select>
+                    <label>Selecione o Contrato</label>
+                </div>
+       </div>
+    </div>
+   <div class="col s6 m4 l1">
+     <div class="valign-wrapper item-linha-1">
+          <span class="text-darken-4">TML</span>              
+            <span>05:59:59</span>
+    </div>
+    </div>
+       <div class="col s6 m4 l1">
+   
+       <div class="valign-wrapper item-linha-1">
+        <span>TMA</span>              
+            <span>00:02:35</span>
+      </div>
      </div>
 
+   <div class="col s6 m4 l2 item-linha-1">
+       <div class="valign-wrapper item-linha-1">
+        <span>Absenteísmo</span>              
+            <span>3,31%</span>
+      </div>
+  </div>
+       <div class="col s6 m6 l2">
+       <div class="valign-wrapper item-linha-1">
+        <span>NR-17 + WC</span>              
+            <span>00:53:00</span>
+      </div>
+    </div>
+           <div class="col s12 m6 l2">
+
+       <div class="valign-wrapper item-linha-1">
+        <span>Hora Extra</span>              
+            <span>9848:43:28</span>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m6 l3">
+  <div class="valign-wrapper item-linha-1">
+    <ul class="collection w100">
+      <li class="collection-item">Valor Projetado<span class="secondary-content black-text">R$ xxx</span></li>
+      <li class="collection-item">Valor Faturado <span class="secondary-content black-text">R$ xxx</span></li>
+      <li class="collection-item">Desvio <span class="secondary-content black-text">R$ xxx</span></li>
+    </ul>
+  </div>
+  </div>
+
+  <div class="col s12 m6 l3">
+  <div class="valign-wrapper item-linha-1">
+    <ul class="collection w100">
+      <li class="collection-item">Entrantes<span class="secondary-content black-text">10.520</span></li>
+      <li class="collection-item">Atendidas<span class="secondary-content black-text">10.480</span></li>
+      <li class="collection-item">Abandonadas<span class="secondary-content black-text">400</span></li>
+    </ul>
+  </div>
+  </div>
+
+    <div class="col s6 m6 l3">
+       <div class="valign-wrapper item-linha-1">
+           <div class="input-field w100">
+                      <select multiple>
+                        <option value="999">Todos</option>
+                        <option value="1">Domingo</option>
+                        <option value="2">Segunda-Feira</option>
+                        <option value="2">Terça-Feira</option>
+                        <option value="2">Quarta-Feira</option>
+                        <option value="2">Quinta-Feira</option>
+                        <option value="2">Sexta-Feira</option>
+                        <option value="2">Sábado</option>
+                      </select>
+                    <label>Dia da Semana</label>
+                </div>
+       </div>
+  </div>
+
+      <div class="col s6 m6 l3">
+       <div class="valign-wrapper item-linha-1">
+           <div class="input-field w100">
+                      <select multiple>
+                        <option value="999">Todos</option>
+                        <option value="1">1º Semana de Setembro</option>
+                        <option value="2">2º Semana de Setembro</option>
+                        <option value="2">3º Semana de Setembro</option>
+                        <option value="2">4º Semana de Setembro</option>
+                        <option value="2">5º Semana de Setembro</option>
+                      </select>
+                    <label>Semana Mês</label>
+                </div>
+       </div>
+  </div>
+</div>
 
 
 
 
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col s12 m12 l7"> 
+      <div class="valign-wrapper item-linha-2">
+        <canvas class="item-linha-2" id="faturamento"></canvas>
+      </div>
+  </div>
+  <div class="col s12 m12 l5 item">
+    <div class="valign-wrapper item-linha-2">
+      <canvas id="entrantesAbandonadas"></canvas>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+  <div class="col s12 m12 l7">
+    <div class="valign-wrapper item-linha-2">
+      <canvas class="item-linha-2" id="tml"></canvas>
+    </div>
+  </div>
+
+
+  <div class="col s12 m12 l5">
+    <div class="valign-wrapper item-linha-2">
+
+      <table id="example" class="mdl-data-table">
+        <thead>
+            <tr>
+                <th class="center-align">Contrato</th>
+                <th class="center-align">Total</th>
+                <th class="center-align">Representatividade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="center-align">PMSP</td>
+                <td class="center-align">308:53:00</td>
+                <td class="center-align">19,26%</td>
+            </tr>
+            <tr>
+                <td class="center-align">MEC</td>
+                <td class="center-align">300:11:00</td>
+                <td class="center-align">31,18%</td>
+            </tr>
+            <tr>
+                <td class="center-align">MTE</td>
+                <td class="center-align">200:11:00</td>
+                <td class="center-align">16,25%</td>
+            </tr>
+            <tr>
+                <td class="center-align">SOCICAM</td>
+                <td class="center-align">45:11:00</td>
+                <td class="center-align">28,15%</td>
+            </tr>
+            <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+                        <tr>
+                <td class="center-align">DEFENSORIA</td>
+                <td class="center-align">150:47:33</td>
+                <td class="center-align">46,25%</td>
+            </tr>
+           
+        </tbody>
+        <tfoot>
+            <tr>
+                <th class="center-align">Contrato</th>
+                <th class="center-align">Total</th>
+                <th class="center-align">Representatividade</th>
+            </tr>
+        </tfoot>
+    </table>
 
     </div>
 
+  </div>
 
-</div>
 
-<div class="row red">
-  <div class="col s12">      
-        <a id="menu" class="waves-effect waves-light btn btn-floating right" ><i class="material-icons">menu</i></a>
-        <div class="tap-target blue" data-activates="menu">
-          <div class="tap-target-content">
-            <h5>Bem vindo ao Workforce Menagement!</h5>
-            <p>Uma das novas funcioanlidades é a personalização, acesse e veja!</p>
-          </div>
-        </div>       
+  <div class="row">
+  <div class="col s12 m12 l12 item-linha-2">
+    <div class="valign-wrapper item-linha-2">
+      <canvas class="item-linha-2" id="abs"></canvas>
     </div>
-</div>
+  </div>
+    <div class="row">
+  <div class="col s12 m12 l6 item-linha-2">
+    <div class="valign-wrapper item-linha-2">
+      <canvas class="item-linha-2" id="tma"></canvas>
+    </div>
+  </div>
+    <div class="row">
+  <div class="col s12 m12 l6 item-linha-2">
+    <div class="valign-wrapper item-linha-2">
+      <canvas class="item-linha-2" id="pausas"></canvas>
+    </div>
+  </div>
 
-<script src="js/jquery-3.4.1.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-   <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <script type="text/javascript" src="chart.min.js"></script>
+
+</div>
+         
+
+
+
+    
+<script src="assets/js/jquery-3.4.1.js"></script>
+<script src="assets/js/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script src="assets/css/fontA/js/brands.js"></script>
+<script src="assets/css/fontA/js/solid.js"></script>
+<script src="assets/css/fontA/js/fontawesome.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+<script src="assets/js/Chart.min.js"></script>
+
+
 </body>
 </html>
 
 <script>
+/* Definir a largura da barra lateral para 250px e a margem esquerda do conteúdo da página para 250px */
+
+$(document).ready(function(){
+ $('.collapsible').collapsible();
+ $('.tap-target').tapTarget('open');
+ 
+  /* inicia a sidenav */
+   $(".sidenav").sidenav();
+   $('select').formSelect();
+
+
+/*
+    // $('select').val([1]);
+    $('select.todos').siblings('ul').prepend('<li id=999><span>Selecionar Todos</span></li>');
+    $('li#999').on('click', function () {
+      var jq_elem = $(this), 
+          jq_elem_span = jq_elem.find('span'),
+          todos = jq_elem_span.text() == 'Selecionar Todos',
+          set_text = todos ? 'Desmarcar Todos' : 'Selecionar Todos';
+      jq_elem_span.text(set_text);
+      jq_elem.siblings('li').filter(function() {
+        return $(this).find('input').prop('checked') != todos;
+      }).click();
+    });
+
+*/
+
+
+   $('#example').DataTable( {
+        columnDefs: [
+            {
+                targets: [ 0, 1, 2 ],
+                className: 'mdl-data-table__cell--non-numeric'
+            }
+        ]
+    } );
 
 
 
 
-// grafico pizza //
+
+  })
+
+
+    var randomScalingFactor = function() {
+      return Math.round(Math.random() * 100);
+    };
+
+// grafico barra //
 
 window.chartColors = {
       red: 'rgb(255, 99, 132)',
@@ -267,6 +544,59 @@ window.chartColors = {
       purple: 'rgb(153, 102, 255)',
       grey: 'rgb(201, 203, 207)'
     };
+
+    
+    var Contratos = ['PMSP', 'MEC', 'DEFENSORIA', 'SEPM', 'MTE', 'CIMA', 'SEA', 'GRUPO SANTA', 'ARSESP', 'SOCICAM', 'CEUMA', 'CDHU'];
+    var color = Chart.helpers.color;
+    var barChartData = {
+      labels: ['PMSP', 'MEC', 'DEFENSORIA', 'SEPM', 'MTE', 'CIMA', 'SEA', 'GRUPO SANTA', 'ARSESP', 'SOCICAM', 'CEUMA', 'CDHU'],
+      datasets: [{
+        label: 'Previsto',
+        backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.red,
+        borderWidth: 1,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }, {
+        label: 'Faturado',
+        backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.blue,
+        borderWidth: 1,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }]
+
+    };
+
+   
+    
+
+
+// grafico pizza //
 
 
     var randomScalingFactor = function() {
@@ -287,9 +617,9 @@ window.chartColors = {
           backgroundColor: [
             window.chartColors.red,
             window.chartColors.orange,
+            window.chartColors.yellow,
             window.chartColors.green,
-            window.chartColors.grey,
-            window.chartColors.purple,
+            window.chartColors.blue,
           ],
           label: 'Dataset 1'
         }],
@@ -307,166 +637,404 @@ window.chartColors = {
     };
 
 
+//
+
+
+  
+    var barChartData33 = {
+      labels: ['PMSP', 'MEC', 'DEFENSORIA', 'SEPM', 'MTE', 'CIMA', 'SEA', 'GRUPO SANTA', 'ARSESP', 'SOCICAM', 'CEUMA', 'CDHU'],
+      datasets: [{
+        label: 'TML',
+        backgroundColor: window.chartColors.red,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }, {
+        label: 'TML-META',
+        backgroundColor: window.chartColors.blue,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }]
+
+    };
 
 
 
 
-// graficos linha //
-
-      var contexto = document.getElementById("grafico1").getContext("2d");
-
-      var grafico = new Chart(contexto, {
-        type:'line',
-        data: {
-            labels: ['janeiro','fevereiro','março','abril','Maio'],
-            datasets: [{ 
-                label:'Vendas',
-                backgroundColor:'#FF0000',
-                borderColor: '#FF0000',
-                data: [1,2,3,4], // faço um implode separando por , para ficar no padrão do data eu consigo misturar o php com javascrip de forma muito simples, bem mais que o asp, por exemplo sem necessidade de ficar criando ajax ?>],      
-
-                fill: false
-              },     { 
-                  label: 'Custos',
-                  backgroundColor: '#00FF00',
-                  borderColor: '#00FF00',
-                  data: [
-                   30,
-                   5,
-                   8,
-                   10,
-                   22
-                  ],
-                  fill: false
-              }]
-          },
-      options: {
-        responsive: true
-      }
-
-      });
+//
 
 
-
-    function createConfig(pointStyle) {
-      return {
+    var chartData = {
+      labels: ['PMSP', 'DEFENSORIA', 'SEPM', 'MTE', 'MEC', 'CDHU', 'SOCICAM'],
+      datasets: [{
         type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [{
-            label: 'My First dataset',
-            backgroundColor: window.chartColors.red,
-            borderColor: window.chartColors.red,
-            data: [10, 23, 5, 99, 67, 43, 0],
-            fill: false,
-            pointRadius: 10,
-            pointHoverRadius: 15,
-            showLine: false // no line shown
-          }]
+        label: 'ABS-META',
+        borderColor: window.chartColors.blue,
+        borderWidth: 2,
+        fill: false,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }, {
+        type: 'bar',
+        label: 'ABS',
+        backgroundColor: window.chartColors.red,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ],
+        borderColor: 'white',
+        borderWidth: 2
+      }]
+
+    };
+
+
+    var chartData2 = {
+      labels: ['PMSP', 'DEFENSORIA', 'SEPM', 'MTE', 'MEC', 'CDHU', 'SOCICAM'],
+      datasets: [{
+        type: 'line',
+        label: 'TMA-META',
+        borderColor: window.chartColors.blue,
+        borderWidth: 2,
+        fill: false,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }, {
+        type: 'bar',
+        label: 'TMA',
+        backgroundColor: window.chartColors.red,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ],
+        borderColor: 'white',
+        borderWidth: 2
+      }]
+
+    };
+
+
+
+
+
+    var config5 = {
+      type: 'line',
+      data: {
+        labels: ['PMSP', 'DEFENSORIA', 'SEPM', 'MTE', 'MEC', 'CDHU', 'SOCICAM'],
+        datasets: [{
+          label: 'NR-17 + WC',
+          backgroundColor: window.chartColors.blue,
+          borderColor: window.chartColors.blue,
+          data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+          ],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: 'NR-17 + WC'
         },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Month'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Value'
+            }
+          }]
+        }
+      }
+    };
+
+    function carregaUltimoGrafico() {
+      var ctx = document.getElementById('pausas').getContext('2d');
+      window.myLine = new Chart(ctx, config5);
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     function carragaOutroGrafico3(){
+      var ctx = document.getElementById('tma').getContext('2d');
+      window.myMixedChart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData2,
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           title: {
             display: true,
-            text: 'Point Style: ' + pointStyle
+            text: 'TMA'
           },
-          legend: {
-            display: false
-          },
-          elements: {
-            point: {
-              pointStyle: 'circle'
-            }
+          tooltips: {
+            mode: 'index',
+            intersect: true
           }
         }
-      };
-    }
-
-    function carrega() {
-      var container = document.querySelector('.container');
-      [
-        'circle',
-        'triangle',
-        'rect',
-        'rectRounded',
-        'rectRot',
-        'cross',
-        'crossRot',
-        'star',
-        'line',
-        'dash'
-      ].forEach(function(pointStyle) {
-        
-        var ctx1 = document.getElementById('grafico2').getContext('2d');
-        var config = createConfig(pointStyle);
-        new Chart(ctx1, config);
       });
-    };
-  
-
-
-
-    window.onload = function() {
-      var ctx = document.getElementById('grafico').getContext('2d');
-      window.myPie = new Chart(ctx, config);
-      var contexto = document.getElementById("grafico1").getContext("2d");
-      carrega();
-    };
-     
-   
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function(){
- $('.collapsible').collapsible();
- $('.tap-target').tapTarget('open');
- 
-  /* inicia a sidenav */
-   $(".button-collapse").sideNav({
-    onOpen: function(){
-      document.getElementById("main").style.marginLeft = "310px";
-      document.getElementById("main").style.transition = "0.1s";
-      document.getElementById("graficosxxx").style.marginLeft = "310px";
-      document.getElementById("graficosxxx").style.transition = "0.1s";
-    },
-    onClose: function(){
-      document.getElementById("main").style.marginLeft = "auto";
-      document.getElementById("main").style.transition = "0.1s";
-      document.getElementById("graficosxxx").style.marginLeft = "auto";
-      document.getElementById("graficosxxx").style.transition = "0.1s";      
     }
-   });
-  })
+
+
+
+    function carragaOutroGrafico(){
+      var ctx = document.getElementById('abs').getContext('2d');
+      window.myMixedChart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          title: {
+            display: true,
+            text: 'Absenteísmo'
+          },
+          tooltips: {
+            mode: 'index',
+            intersect: true
+          }
+        }
+      });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function grafico5(){
+
+
+      var ctx = document.getElementById('tml').getContext('2d');
+      window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData33,
+        options: {
+          title: {
+            display: true,
+            text: 'TML'
+          },
+          tooltips: {
+            mode: 'index',
+            intersect: false
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            xAxes: [{
+              stacked: true,
+            }],
+            yAxes: [{
+              stacked: true
+            }]
+          }
+        }
+      });
+
+    }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function carregaEssaPorra() {
+      var ctx2 = document.getElementById('entrantesAbandonadas').getContext('2d');
+      window.myPie = new Chart(ctx2, config);
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+    
+
+    function grafico3(){
+      var ctx = document.getElementById('faturamento').getContext('2d');
+      window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'FATURAMENTO'
+          }
+        }
+      });
+    }
+
+
+  
+    window.onload = function() {
+     // var ctx = document.getElementById('grafico').getContext('2d');
+     // window.myPie = new Chart(ctx, config);
+     // var contexto = document.getElementById("grafico1").getContext("2d");
+     // carrega();
+     grafico3();
+      carregaEssaPorra();
+     grafico5()
+     carragaOutroGrafico()
+     carragaOutroGrafico3()
+     carregaUltimoGrafico()
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function openNav() {
   //document.getElementById("mySidebar").style.width = "250px";
   //document.getElementById("mySidebar").style.transition = "1s";
-  document.getElementById("main").style.marginLeft = "310px";
+  document.getElementById("main").style.marginLeft = "300px";
   document.getElementById("main").style.transition = "0.1s";
   //collapseAll()
 }
@@ -478,6 +1046,8 @@ function closeNav() {
   document.getElementById("main").style.transition = "0.2s";
  // collapseAll()
 }
+
+
 
 
 	</script>
