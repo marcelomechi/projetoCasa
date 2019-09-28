@@ -1,0 +1,48 @@
+/*
+
+EU PRECISO SABER SE NA TABELA MENU TEM A INFORMAÇÃO SE ELE TEM OU NÃO SUBMENU JÁ QUE NO FRONT É DIFERNTE A MONTAGEM DE UM MENU SEM SUBMENU PARA UM MENU COM SUBMENU, A PARTIR DA INFORMAÇÃO DENTRO DO LOOP EU VERIFICO SE O MENU TEM OU NÃO SUBMENU MONTANDO DAS DUAS FORMAS
+
+DENTRO DA TABELA DE SUBMENUS TAMBEM PRECISO SABER SE ESSE SUBMENU TEM OUTRO SUBMENU ASSIM TENHO QUE FAZER OUTRO IF E OUTRO LOOP, SE ESSE SUBMENU DO SUBMENU TIVER SUBMENU TENHO QUE FAZER OUTRO LOOP E ASSIM VAI.....
+
+TENHO QUE VERIFICAR TAMBÉM OS DUPLICADOS PARA NA CONSULTA NÃO TRAZER OS SUBMENUS EM EM LINHAS SEPARADAS, EXEMPLO, TENHO QUE TRAZER ASSIM
+
+ID MENU, NOME MENU, FLAG_SUBMENU, SUBMENU, NOME_SUBMENU.... NÃO PODE ESTAR EM OUTRAS LINHAS
+
+*/
+
+		public function carregaMenu(){
+
+			$sql = "SELECT T.NOME, T.ORDEM, T.FLAG_SUBMENU, FER.nome AS SUBMENU, FER.caminho AS CAMINHO_SUMENU FROM TB_TOOLS T LEFT JOIN tb_ferramenta FER ON FER.id_tool = T.id_modulo";
+			$sql = $this-> db -> prepare($sql);
+			$sql -> execute();
+
+
+			if($sql -> rowCount() > 0){
+		          $sql = $sql -> fetchAll();
+		          foreach ($sql as $key => $value) {
+		            echo '<li>';
+		           
+		           		if($value['FLAG_SUBMENU'] == 0){
+          					echo '<a href='.$value['NOME'].' class="collapsible-header"><i class="material icons"><img class="circle responsive-img iconeTemplate" src="assets/images/perfil.png"></i>'.$value['NOME'].'</a>';	           				
+		           		}else{
+
+				            echo ' <a class="collapsible-header"><i class="material icons"><img class="circle responsive-img iconeTemplate" src="assets/images/trabalho-em-equipe.png"></i><i class="material icons small right"><i class="fas fa-angle-down"></i></i>'.$value['NOME'].'</a>';
+				            		foreach ($sql as $key => $value2) {
+				            			echo '<div class="collapsible-body">';
+				            			echo '<ul>';
+				            			echo '<li>';
+				            				echo '<a href='.BASE_URL.$value2['CAMINHO_SUMENU'].'>'.$value2['SUBMENU'].'</a>';
+				            			echo '</li>';
+				            			echo '</ul>';
+				            			echo '</div>';
+				            		}
+
+				           		}
+
+		            echo '</li>';
+		          }
+    }else{
+      return false;
+    }
+
+		}	
