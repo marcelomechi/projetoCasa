@@ -12,30 +12,36 @@ ID MENU, NOME MENU, FLAG_SUBMENU, SUBMENU, NOME_SUBMENU.... NÃO PODE ESTAR EM O
 
 		public function carregaMenu(){
 
+			
+
+
 			$sql = "SELECT T.NOME, T.ORDEM, T.FLAG_SUBMENU, FER.nome AS SUBMENU, FER.caminho AS CAMINHO_SUMENU FROM TB_TOOLS T LEFT JOIN tb_ferramenta FER ON FER.id_tool = T.id_modulo";
 			$sql = $this-> db -> prepare($sql);
 			$sql -> execute();
 
-
 			if($sql -> rowCount() > 0){
 		          $sql = $sql -> fetchAll();
+
 		          foreach ($sql as $key => $value) {
-		            echo '<li>';
-		           
+		            echo '<li>';		           
 		           		if($value['FLAG_SUBMENU'] == 0){
           					echo '<a href='.$value['NOME'].' class="collapsible-header"><i class="material icons"><img class="circle responsive-img iconeTemplate" src="assets/images/perfil.png"></i>'.$value['NOME'].'</a>';	           				
 		           		}else{
 
-				            echo ' <a class="collapsible-header"><i class="material icons"><img class="circle responsive-img iconeTemplate" src="assets/images/trabalho-em-equipe.png"></i><i class="material icons small right"><i class="fas fa-angle-down"></i></i>'.$value['NOME'].'</a>';
-				            		foreach ($sql as $key => $value2) {
-				            			echo '<div class="collapsible-body">';
-				            			echo '<ul>';
-				            			echo '<li>';
-				            				echo '<a href='.BASE_URL.$value2['CAMINHO_SUMENU'].'>'.$value2['SUBMENU'].'</a>';
-				            			echo '</li>';
-				            			echo '</ul>';
-				            			echo '</div>';
+				                echo '<a class="collapsible-header"><i class="material icons"><img class="circle responsive-img iconeTemplate" src="assets/images/trabalho-em-equipe.png"></i><i class="material icons small right"><i class="fas fa-angle-down"></i></i>'.$value['NOME'].'</a>';
+				            	echo '<div class="collapsible-body">';
+				            	echo '<ul>';
+				            
+				            	 	foreach ($sql as $value2) {
+				            	 		if(empty($value2['SUBMENU'])) // faço esse if para saber se o indice submenu está vazio. caso esteja eu paro o loop
+				            	 		{
+				            	 			break;
+				            	 		}
+				            			echo '<li><a href='.BASE_URL.$value2['CAMINHO_SUMENU'].'>'.$value2['SUBMENU'].'</a></li>';
 				            		}
+            		
+				            	echo '</ul>';
+				            	echo '</div>';
 
 				           		}
 
@@ -45,4 +51,4 @@ ID MENU, NOME MENU, FLAG_SUBMENU, SUBMENU, NOME_SUBMENU.... NÃO PODE ESTAR EM O
       return false;
     }
 
-		}	
+		}
