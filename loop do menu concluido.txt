@@ -1,0 +1,62 @@
+
+		public function carregaMenu(){
+
+
+/*
+ * primeiro eu verifico se a quantidade se submenus é maior que zero e o id_modulo_referencia é null, significa que estou trabalhando um menu principal.
+ * no elseif eu verifico se a quantidade é maior que zero e o id_modulo_referencia é null assim eu sei que é um menu principal com submenu
+ * depois eu faço um foreach buscando os submenus
+ * no primeiro if do submenu (value2) eu verifico se a quantidade é igual a 0 e o id_modulo_referencia não é null, assim eu sei que se trata de um submenu, e para ligar esse submenu ao seu menu, faço outra verificação, se o id_modulo_referencia é igual ao id_modulo, evitando duplicar tudo
+ * no elseif eu verifico se a qtde é maior que zero, o id_modulo_referencia é diferente de null e faço a ligação do id_modulo_referencia com o id_modulo montando o submenu do submenu
+ * depois de montar a estrutura eu repito o foreach
+ * verifico se o valor do id_modulo_referencia é igual ao valor do id_modulo ligando os dois
+ *
+ *
+ *
+ */
+
+			$sql = "SELECT * FROM tb_ferramenta_completa";
+			$sql = $this-> db -> prepare($sql);
+			$sql -> execute();
+
+			if($sql -> rowCount() > 0){
+		          $sql = $sql -> fetchAll();
+
+		          foreach ($sql as $value):
+                      if ($value['qtde'] == 0 && $value['id_modulo_referencia'] == NULL):
+                          echo '<li><a href="'.$value['nome_modulo'].'">'.$value['nome_modulo'].'</a></li>';
+                      elseif($value['qtde'] > 0 && $value['id_modulo_referencia'] == NULL):
+                        echo '<li>';
+                             echo '<a class="collapsible-header"><i class="material icons"><img class="circle responsive-img iconeTemplate" src="assets/images/inteligencia.png"></i>'.$value['nome_modulo'].'<i class="material icons small right"><i class="fas fa-angle-down"></i></i></a>';
+                             echo '<div class="collapsible-body">';
+                             echo '<ul>';
+                                foreach ($sql as $value2):
+                                    if ($value2['qtde'] == 0 && $value2['id_modulo_referencia'] != NULL && $value2['id_modulo_referencia'] == $value['id_modulo']):
+                                        echo '<li><a href="'.$value2['caminho_link'].'">'.$value2['titulo_web'].'</a></li>';
+                                    elseif($value2['qtde'] > 0 && $value2['id_modulo_referencia'] != NULL && $value2['id_modulo_referencia'] == $value['id_modulo'] ):
+                                        echo '<ul class="collapsible">';
+                                        echo '<li>';
+                                        echo '<a class="collapsible-header"><i class="material icons small right"><i class="fas fa-angle-down"></i></i>'.$value2['nome_modulo'].'</a>';
+                                        echo '<div class="collapsible-body">';
+                                        echo '<ul>';
+                                            foreach ($sql as $value3):
+                                               if($value3['id_modulo_referencia'] == $value2['id_modulo']):
+                                                 echo '<li><a href="'.$value3['caminho_link'].'">'.$value3['titulo_web'].'</a></li>';
+                                               endif;
+                                            endforeach;
+                                        echo '</ul>';
+                                        echo '</div>';
+                                        echo '</li>';
+                                        echo '</ul>';
+                                    endif;
+                                endforeach;
+                             echo '</ul>';
+                            echo '</div>';
+                        echo ('</li>');
+                      endif;
+                  endforeach;
+            }else{
+                  return false;
+            }
+
+		}
