@@ -7,3 +7,26 @@ echo '<li class="'.$value['classe'].'"><img src="'.$value['caminho'].'"></li>';
 
 
 Dúvidas verifique as fotos
+
+
+
+Abaixo uma forma melhor de montar os checkbox de selecao de tema e exibir aniversario
+
+            <div class="input-field"><br>
+              <label for="tema">Tema Escuro</label>
+                 <div id="tema" class="switch"><br>
+                    <label class="center-align">
+                      <input type="checkbox">
+                      Desligado<span class="lever"></span>Ligado
+                    </label>
+                 </div>                
+             </div>  
+             <div class="input-field"><br>
+              <label for="tema">Exibir Aniversário?</label>
+                 <div id="tema" class="switch"><br>
+                    <label class="center-align">
+                      <input type="checkbox">
+                      Não<span class="lever"></span>Sim
+                    </label>
+                 </div>                
+             </div>   
