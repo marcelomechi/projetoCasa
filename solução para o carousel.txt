@@ -4,3 +4,6 @@ SELECT *, CASE WHEN ID_IMAGEM IS NULL THEN 'carousel-item' else 'carousel-item a
 a solução é fazer um case se a id_imagem_preferencia for null no then coloco carousel-item se não for null coloco carousel-item active, pois ele terá selecionado uma, preciso também que todas as linhas sejam carregadas com o where para isso se o usuario for null faço um subselect para preencher com meu usuario. assim no foreach ele já monta com a classe certa.
 
 echo '<li class="'.$value['classe'].'"><img src="'.$value['caminho'].'"></li>';
+
+
+Dúvidas verifique as fotos
